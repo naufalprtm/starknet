@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Starkli and Scarb Tutorial</title>
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <img src="1.png" alt="Logo">
+                <h1>Deploy Testnet Contract Tutorial</h1>
+            </header>
+    
+            <div class="tutorial-step">
+                <pre>  <h1>Note: I'm using WSL Ubuntu 22.04. If you're using Windows, refer to  <a href="https://docs.swmansion.com/scarb/download.html#windows">Windows</a></h1>
+                       
+                <h1>WARNING THAT IT'S BETTER TO USE A NEW WALLET IF YOU WANT TO TRY AND LEARN</h1> </pre>
+               
+                <h2>Step 1: Installing Starkli</h2>
+                <p>Install Starkli and verify the installation. The steps for installing Starkli and upgrading Starkli are identical.</p>
+                <pre>
+                    <code>
+curl https://get.starkli.sh | sh
+</code>
+                </pre>
+                <p>Starkliup should now be installed. Restart the terminal. Install Starkli:</p>
+                <pre>
+                    <code>
+starkliup
+</code>
+                </pre>
+                <p>Starkli should now be installed. Restart the terminal and run the following command to verify the installation:</p>
+                <pre>
+                    <code>
+starkli --version
+</code>
+                </pre>
+                <p>Expected output:</p>
+                <pre>
+                    <code>
+Starkli version X.X.X
+</code>
+                </pre>
+            </div>
+    
+            <div class="tutorial-step">
+                <h2>Step 2: Installing Scarb</h2>
+                <p>Install Scarb and verify the installation.Restart the termina after install</p>
+                <pre>
+                    <code>
+curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh
+</code>
+</pre>
+<p>scarb should now be installed. Restart the terminal and run the following command to verify the installation:</p>
+<pre>
+</code>
+scarb --version
+</code>
+                </pre>
+                <p>Expected output:</p>
+                <pre>
+                    <code>
+Scarb version X.X.X
+</code>
+                </pre>
+            </div>
+    <div class="tutorial-step">
+    <h2>Step 3: Make a directory</h2>
+    <p>Create directories for Starkli wallets.</p>
+    <pre>
+        <code>
+mkdir .starkli-wallets
+mkdir ~/.starkli-wallets/deployer
+        </code>
+    </pre>
+</div>
+
+    <div class="tutorial-step">
+    <h2>Step 4: Create a Keystore File</h2>
+    <p>Create a keystore file and import your private key from Argent or Braavos:</p>
+    <pre>
+        <code>
+starkli signer keystore from-key ~/.starkli-wallets/deployer/keystore.json
+</code>
+</pre>
+<p>Enter private key: (your private key from Argent or Braavos)  <p></p>
+    <p>Enter password: (your password)  <p></p>
+
+    </pre>
+    <p>Expected output:</p>
+    <pre>
+        <code>
+Created new encrypted keystore file: /home/parallels/.starkli-wallets/deployer/keystore.json
+Public key: 0x0550…
+        </code>
+    </pre>
+</div>
+
+    <div class="tutorial-step">
+    <h2>Step 5: Creating an Account Descriptor</h2>
+    <p>Generate an account descriptor for your smart wallet:</p>
+    <pre>
+        <code>
+starkli account fetch &lt;SMART_WALLET_ADDRESS&gt; --output ~/.starkli-wallets/deployer/account.json
+        </code>
+    </pre>
+    <p>Sample:</p>
+    <pre>
+        <code>
+starkli account fetch 0x00000000000b2909291AfB0204B2092d1f36C10F4ECD38A29F79e3A3319d0000 --output ~/.starkli-wallets/deployer/account.json
+        </code>
+    </pre>
+
+    <div class="tutorial-step">
+    <h2>Step 6: View Account Descriptor</h2>
+    <p>View the account descriptor:</p>
+    <pre>
+        <code>
+cat ~/.starkli-wallets/deployer/account.json
+        </code>
+    </pre>
+</div>
+
+    <div class="tutorial-step">
+    <h2>Step 7: Deploying an Account"Skip this step if your wallet has been deployed"</h2>
+    <p>Deploy your account using the account descriptor:</p>
+    <pre>
+        <code>
+starkli account deploy ~/.starkli-wallets/deployer/account.json
+        </code>
+    </pre>
+</div>
+
+    <div class="tutorial-step">
+    <h2>Step 8: Ensure Installation</h2>
+    <p>Verify that Starkli and Scarb are installed correctly:</p>
+    <pre>
+        <code>
+starkli --version
+scarb --version
+        </code>
+    </pre>
+    <p>Expected output:</p>
+    <pre>
+        <code>
+Starkli version X.X.X
+Scarb version X.X.X
+        </code>
+    </pre>
+</div>
+
+    <div class="tutorial-step">
+    <h2>Step 9: Compile a Smart Contract</h2>
+    <p>Create a directory with a Scarb.toml file and update it:</p>
+    <pre>
+        <code>
+cd
+scarb init
+nano Scarb.toml
+        </code>
+    </pre>
+    <p>Insert the following code into the Scarb.toml file:</p>
+    <pre>
+        <code>
+[package]
+name = "my_contract"
+version = "0.1.0"
+
+[dependencies]
+starknet = "=2.3.1"
+
+[[target.starknet-contract]]
+        </code>
+    </pre>
+</div>
+
+    <div class="tutorial-step">
+    <h2>Step 10: Create the TEST contract</h2>
+    <p>Replace the contents of ./src/lib.cairo with specific content:</p>
+        
+   <p>Copy this sample contract code <a href="https://github.com/naufalprtm/starknet/blob/main/contract/lib.cairo">sample</a>.</p>
+   <pre>
+
+        <code>
+nano src/lib.cairo
+        </code>
+    </pre>
+
+    <h2>Step 11: Compile the Smart Contract</h2>
+    <p>Compile the smart contract using Scarb:</p>
+    <pre>
+        <code>
+scarb build
+        </code>
+    </pre>
+
+    <p>The compiled contract will be saved in the target/dev/ directory.
+
+        The contract is now compiled and ready to be deployed. Next you will need to declare an RPC provider within your contract.</p>
+    <pre>
+</div>
+
+    <div class="tutorial-step">
+    <h2>Step 12: Declare a Smart Contract</h2>
+    <p>Declare a smart contract on Starknet:</p>
+    <pre>
+        <code>
+starkli declare target/dev/&lt;NAME&gt;.json --network=goerli-1 --compiler-version=2.1.0
+        </code>
+    </pre>
+    <p>Sample:</p>
+    <pre>
+        <code>
+starkli declare /home/users/target/dev/my_contract_Ownable.contract_class.json --network=goerli-1 --compiler-version=2.1.0
+        </code>
+    </pre>
+</div>
+
+    <div class="tutorial-step">
+    <h2>Step 13: Deploying a Smart Contract</h2>
+    <p>Deploy the smart contract with specific inputs:</p>
+    <pre>
+        <code>
+starkli deploy &lt;CLASS_HASH&gt; &lt;CONSTRUCTOR_INPUTS&gt; --network=goerli-1
+        </code>
+    </pre>
+    <p>Sample input:</p>
+    <pre>
+        <code>
+starkli deploy \
+    0x05c479961b3a155df6b2468a72a823dcc89ec76898060a3e694f32a0xxxxxxxx \
+    0x07ef62ac769dd7fabb2b07cc268c87dae36986fee79e9ff196920507xxxxxxxx \
+    --network=goerli-1
+        </code>
+    </pre>
+    <p>Expected output:</p>
+    <pre>
+        <code>
+Deploying class 0x07ef62ac769dd7fabb2b07cc268c87dae36986fee79e9ff196920507xxxxxxxx with salt 0x05c479961b3a155df6b2468a72a823dcc89ec76898060a3e694f32a0xxxxxxxx...
+The contract will be deployed at address 0x0310dc277877a6a2305808dc1b72716c274f67f03af5f04a0dfb6014518464b7
+Contract deployment transaction: 0x06def6fadcf26a5a86a1c3525e8c446749649dcf4fab0c9914cb4e1bea8b8890
+Contract deployed:
+0x0310dc277877a6a2305808dc1b72716c274f67f03af5f04a0dfb6014518464b7
+        </code>
+    </pre>
+</div>
+
+<p>Check the deployment result on <a href="https://testnet.starkscan.co/contract/">StarkScan</a>.</p>
+
+<div class="image">
+    <img src="1.png" alt="Starkli and Scarb">
+</div>
+
+<div class="created-by">
+<p>Created by: <a href="https://github.com/naufalprtm">NaufalPrtm</a>.</p>
+</div>
+
+<p>Official Reference Website: <a href="https://www.starknet.io/en/">Starknet</a>.</p>
+<p>Official Reference Docs: <a href="https://docs.starknet.io/documentation/">Starknet Docs</a>.</p>
+<p>Reference Docs: <a href="https://book.starknet.io//">book starknet</a>.</p>
+<p>Reference EDU: <a href="https://github.com/starknet-edu">starknet edu</a>.</p>
+<p>Reference book cairo: <a href="https://book.cairo-lang.org/">book cairo</a>.</p>
+<p>Starknet Blog <a href="/index.html">Starknet Blog</a>.</p>
+<p>Starknet OpenZeppelin Contracts <a href="/zeppelin.html">OpenZeppelin Contracts for Cairo</a>.</p>
+</body>
+</html>

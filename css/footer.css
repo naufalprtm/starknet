@@ -1,0 +1,28 @@
+/* footer.css */
+
+footer {
+    background: rgb(204,17,0);
+background: -moz-linear-gradient(225deg, rgba(204,17,0,1) 13%, rgba(179,74,0,1) 54%, rgba(51,8,92,1) 90%);
+background: -webkit-linear-gradient(225deg, rgba(204,17,0,1) 13%, rgba(179,74,0,1) 54%, rgba(51,8,92,1) 90%);
+background: linear-gradient(225deg, rgba(204,17,0,1) 13%, rgba(179,74,0,1) 54%, rgba(51,8,92,1) 90%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#cc1100",endColorstr="#33085c",GradientType=1);
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+footer p {
+    font-size: 14px;
+    
+}
+
+/* Additional styles for links or other footer elements */
+footer img {
+    display: block; /* Remove any extra spacing */
+    margin: 0 auto; /* Center align the images */
+    border: 2px solid #fff; /* Menambahkan border */
+    border-radius: 50%; /* Membuat sudut sudut elemen menjadi melengkung */
+    width: 10%; /* Lebar maksimum gambar */
+    height: 7%; /* Pertahankan rasio aspek gambar */
+    
+}

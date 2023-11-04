@@ -1,0 +1,15 @@
+/* slider.css */
+
+#slider-container {
+    text-align: center; /* Agar gambar berada di tengah secara horizontal */
+    
+}
+
+#security-slider {
+    width: 50%; /* Mengisi lebar kontainer */
+    height: auto; /* Menjaga aspek gambar agar tidak terdistorsi */
+    display: block; /* Hapus spasi tambahan jika ada */
+    margin: 0 auto; /* Agar gambar berada di tengah secara vertikal */
+    border: 2px solid #000; /* Tambahkan border */
+    border-radius: 50px; /* Radius sudut */
+}

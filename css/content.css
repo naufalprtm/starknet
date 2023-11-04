@@ -1,0 +1,92 @@
+/* content.css */
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.article-image {
+    width: 30%; /* Set a fixed width for the images */
+    display: block; /* Remove any extra spacing */
+    margin: 0 auto; /* Center align the images */
+    border-radius: 50%; /* Make the image circular */
+}
+
+article {
+    background: rgb(0,16,46);
+    background: -moz-linear-gradient(90deg, rgba(0,16,46,1) 0%, rgba(255,255,255,1) 44%, rgba(190,119,20,1) 73%, rgba(42,26,1,1) 94%);
+    background: -webkit-linear-gradient(90deg, rgba(0,16,46,1) 0%, rgba(255,255,255,1) 44%, rgba(190,119,20,1) 73%, rgba(42,26,1,1) 94%);
+    background: linear-gradient(90deg, rgba(0,16,46,1) 0%, rgba(255,255,255,1) 44%, rgba(190,119,20,1) 73%, rgba(42,26,1,1) 94%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00102e",endColorstr="#2a1a01",GradientType=1);
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5%; /* Mengubah elemen menjadi lingkaran */
+    box-shadow: 0px 0px 10px #000; /* Efek bayangan */
+}
+
+/* Tambahkan efek gelembung pada teks artikel */
+.article-text p {
+    text-align: center;
+    background-color: #ffffff; /* Warna latar belakang */
+    color: #000000; /* Warna teks */
+    border-radius: 15px; /* Radius sudut elemen */
+    padding: 10px 15px; /* Padding di dalam elemen */
+    box-shadow: 0px 0px 5px #000; /* Efek bayangan */
+    margin: 10px 0; /* Margin atas dan bawah untuk mengatur jarak antar artikel */
+}
+
+h2 {
+    font-size: 30px;
+    text-align: center;
+    color: rgb(255, 255, 255); /* Warna teks */
+    background: rgb(255,255,255);
+background: -moz-linear-gradient(90deg, rgba(255,255,255,1) 18%, rgba(167,0,0,1) 39%, rgba(34,20,190,1) 61%, rgba(255,255,255,1) 83%);
+background: -webkit-linear-gradient(90deg, rgba(255,255,255,1) 18%, rgba(167,0,0,1) 39%, rgba(34,20,190,1) 61%, rgba(255,255,255,1) 83%);
+background: linear-gradient(90deg, rgba(255,255,255,1) 18%, rgba(167,0,0,1) 39%, rgba(34,20,190,1) 61%, rgba(255,255,255,1) 83%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ffffff",GradientType=1);
+border-radius: 50px; /* Radius sudut elemen */
+padding: 5px 15px; /* Padding di dalam elemen */
+box-shadow: 0px 0px 5px #000; /* Efek bayangan */
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    
+}
+
+/* Custom styling for images and other elements */
+/* CSS untuk menengahkan gambar dan tombol slider */
+#slider-container {
+    text-align: center;
+}
+
+#slider-controls {
+    text-align: center;
+    margin-top: 10px; /* Jarak antara gambar dan tombol */
+}
+
+/* Gaya tambahan sesuai kebutuhan Anda */
+
+/* Menambahkan efek gelembung pada footer */
+footer {
+    border: 2px solid #000; /* Tambahkan border */
+    border-radius: 15px; /* Radius sudut */
+    padding: 15px; /* Padding di dalam elemen */
+    box-shadow: 0px 0px 10px #000; /* Efek bayangan */
+}
+.zeppelin{
+    background: rgb(0,0,0);
+    background: -moz-linear-gradient(225deg, rgba(0,0,0,1) 16%, rgba(139,2,124,1) 42%, rgba(208,54,54,1) 89%);
+    background: -webkit-linear-gradient(225deg, rgba(0,0,0,1) 16%, rgba(139,2,124,1) 42%, rgba(208,54,54,1) 89%);
+    background: linear-gradient(225deg, rgba(0,0,0,1) 16%, rgba(139,2,124,1) 42%, rgba(208,54,54,1) 89%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#d03636",GradientType=1);
+    text-align: center;
+    border: 2px solid #000; /* Tambahkan border */
+    border-radius: 5px; /* Radius sudut */
+    margin: 0;
+    padding: 0;
+    box-shadow: 0px 0px 10px #000; /* Efek bayangan */
+}

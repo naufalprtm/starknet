@@ -1,0 +1,51 @@
+/* head.css */
+
+header {
+    background: rgb(0,0,0);
+    background: -moz-linear-gradient(225deg, rgba(0,0,0,1) 16%, rgba(139,2,124,1) 42%, rgba(208,54,54,1) 89%);
+    background: -webkit-linear-gradient(225deg, rgba(0,0,0,1) 16%, rgba(139,2,124,1) 42%, rgba(208,54,54,1) 89%);
+    background: linear-gradient(225deg, rgba(0,0,0,1) 16%, rgba(139,2,124,1) 42%, rgba(208,54,54,1) 89%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#d03636",GradientType=1);
+    text-align: center;
+    border: 2px solid #000; /* Tambahkan border */
+    border-radius: 15px; /* Radius sudut */
+    padding: 15px; /* Padding di dalam elemen */
+    box-shadow: 0px 0px 10px #000; /* Efek bayangan */
+}
+
+header h1 {
+    font-size: 24px;
+    color: #fff; /* Warna teks h1 menjadi putih */
+}
+
+header p {
+    font-size: 16px;
+    color: #fff; /* Warna teks paragraf menjadi putih */
+}
+
+/* Memberikan efek lingkaran pada gambar profil */
+header img[alt="Starknet Blog Banner"] {
+    display: block; /* Hilangkan spasi tambahan jika ada */
+    margin: 0 auto; /* Pusatkan gambar */
+    max-width: 10%; /* Lebar gambar maksimum sesuai dengan lebar header */
+    height: auto; /* Pertahankan rasio aspek gambar */
+}
+
+.title {
+    text-align: center; /* Membuat teks menjadi di tengah */
+    padding: 10px; /* Berikan ruang di sekitar teks */
+    display: inline-block; /* Tetapkan elemen ke tampilan inline block */
+    background-color: #f0f0f0; /* Warna latar belakang */
+    border-radius: 10px; /* Radius sudut elemen */
+    color: #000; /* Warna teks */
+    font-size: 18px; /* Ukuran teks */
+}
+.banner-image {
+    width: 100%; /* Set a fixed width for the images */
+    display: block; /* Remove any extra spacing */
+    margin: 0 auto; /* Center align the images */
+    border-radius: 50%; /* Make the image circular */
+    border: 2px solid #000; /* Tambahkan border */
+    padding: 15px; /* Padding di dalam elemen */
+    box-shadow: 0px 0px 10px #000; /* Efek bayangan */
+}

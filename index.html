@@ -1,265 +1,142 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Starkli and Scarb Tutorial</title>
-        <link rel="stylesheet" type="text/css" href="/styles.css">
-    </head>
-    <body>
-        <div class="container">
-            <header>
-                <img src="1.png" alt="Logo">
-                <h1>Deploy Testnet Contract Tutorial</h1>
-            </header>
-    
-            <div class="tutorial-step">
-                <h1>Note: I'm using WSL Ubuntu 22.04. If you're using Windows, refer to 
-                    <a href="https://docs.swmansion.com/scarb/download.html#windows">Windows</a>
-                </h1>
-                
-                <h2>Step 1: Installing Starkli</h2>
-                <p>Install Starkli and verify the installation. The steps for installing Starkli and upgrading Starkli are identical.</p>
-                <pre>
-                    <code>
-curl https://get.starkli.sh | sh
-</code>
-                </pre>
-                <p>Starkliup should now be installed. Restart the terminal. Install Starkli:</p>
-                <pre>
-                    <code>
-starkliup
-</code>
-                </pre>
-                <p>Starkli should now be installed. Restart the terminal and run the following command to verify the installation:</p>
-                <pre>
-                    <code>
-starkli --version
-</code>
-                </pre>
-                <p>Expected output:</p>
-                <pre>
-                    <code>
-Starkli version X.X.X
-</code>
-                </pre>
-            </div>
-    
-            <div class="tutorial-step">
-                <h2>Step 2: Installing Scarb</h2>
-                <p>Install Scarb and verify the installation.Restart the termina after install</p>
-                <pre>
-                    <code>
-curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh
-</code>
-</pre>
-<p>scarb should now be installed. Restart the terminal and run the following command to verify the installation:</p>
-<pre>
-</code>
-scarb --version
-</code>
-                </pre>
-                <p>Expected output:</p>
-                <pre>
-                    <code>
-Scarb version X.X.X
-</code>
-                </pre>
-            </div>
-    <div class="tutorial-step">
-    <h2>Step 3: Make a directory</h2>
-    <p>Create directories for Starkli wallets.</p>
-    <pre>
-        <code>
-mkdir .starkli-wallets
-mkdir ~/.starkli-wallets/deployer
-        </code>
-    </pre>
-</div>
+<head>
+    <title>Starknet Blog</title>
+    <link rel="stylesheet" type="text/css" href="/css/body.css">
+    <link rel="stylesheet" type="text/css" href="/css/content.css">
+    <link rel="stylesheet" type="text/css" href="/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="/css/head.css">
+    <link rel="stylesheet" type="text/css" href="/css/slider.css"> 
 
-    <div class="tutorial-step">
-    <h2>Step 4: Create a Keystore File</h2>
-    <p>Create a keystore file and import your private key from Argent or Braavos:</p>
-    <pre>
-        <code>
-starkli signer keystore from-key ~/.starkli-wallets/deployer/keystore.json
-</code>
-</pre>
-<p>Enter private key: (your private key from Argent or Braavos)  <p></p>
-    <p>Enter password: (your password)  <p></p>
+</head>
+<body>
 
-    </pre>
-    <p>Expected output:</p>
-    <pre>
-        <code>
-Created new encrypted keystore file: /home/parallels/.starkli-wallets/deployer/keystore.json
-Public key: 0x0550…
-        </code>
-    </pre>
-</div>
+<header>
+    <img src="/images/SN-Stacked-Gradient.png" alt="Starknet Blog Banner">
+    <br>
+    <h1 class="title">Welcome to Starknet Blog</h1>
+</header>
 
-    <div class="tutorial-step">
-    <h2>Step 5: Creating an Account Descriptor</h2>
-    <p>Generate an account descriptor for your smart wallet:</p>
-    <pre>
-        <code>
-starkli account fetch &lt;SMART_WALLET_ADDRESS&gt; --output ~/.starkli-wallets/deployer/account.json
-        </code>
-    </pre>
-    <p>Sample:</p>
-    <pre>
-        <code>
-starkli account fetch 0x00000000000b2909291AfB0204B2092d1f36C10F4ECD38A29F79e3A3319d0000 --output ~/.starkli-wallets/deployer/account.json
-        </code>
-    </pre>
 
-    <div class="tutorial-step">
-    <h2>Step 6: View Account Descriptor</h2>
-    <p>View the account descriptor:</p>
-    <pre>
-        <code>
-cat ~/.starkli-wallets/deployer/account.json
-        </code>
-    </pre>
-</div>
 
-    <div class="tutorial-step">
-    <h2>Step 7: Deploying an Account"Skip this step if your wallet has been deployed"</h2>
-    <p>Deploy your account using the account descriptor:</p>
-    <pre>
-        <code>
-starkli account deploy ~/.starkli-wallets/deployer/account.json
-        </code>
-    </pre>
-</div>
 
-    <div class="tutorial-step">
-    <h2>Step 8: Ensure Installation</h2>
-    <p>Verify that Starkli and Scarb are installed correctly:</p>
-    <pre>
-        <code>
-starkli --version
-scarb --version
-        </code>
-    </pre>
-    <p>Expected output:</p>
-    <pre>
-        <code>
-Starkli version X.X.X
-Scarb version X.X.X
-        </code>
-    </pre>
-</div>
-
-    <div class="tutorial-step">
-    <h2>Step 9: Compile a Smart Contract</h2>
-    <p>Create a directory with a Scarb.toml file and update it:</p>
-    <pre>
-        <code>
-cd
-scarb init
-nano Scarb.toml
-        </code>
-    </pre>
-    <p>Insert the following code into the Scarb.toml file:</p>
-    <pre>
-        <code>
-[package]
-name = "my_contract"
-version = "0.1.0"
-
-[dependencies]
-starknet = "=2.3.1"
-
-[[target.starknet-contract]]
-        </code>
-    </pre>
-</div>
-
-    <div class="tutorial-step">
-    <h2>Step 10: Create the TEST contract</h2>
-    <p>Replace the contents of ./src/lib.cairo with specific content:</p>
+<main>
+    <br>
+    <h1 class="title">Exploring the World of Starknet</h1>
+    <img src="/images/b1.png" class="banner-image">
+    <br>
+    <article class="article-text">
+        <img src="/images/What is Starknet.png" class="article-image">
+        <h2>What is Starknet?</h2>
+        <p>
+            Starknet is a Validity Rollup Layer 2. It provides high throughput, low gas costs, and retains Ethereum Layer 1 levels of security. Imagine it as a way to make Ethereum faster, cheaper, and just as secure.
+        </p>
+        <p>Starknet operates on the principle that verifying a solution is easier than solving a problem from scratch. Think of it like a Sudoku puzzle. When someone solves it, others can verify the solution without redoing all the work. This strategy reduces redundancy and makes the network more efficient.</p>
+        <p>In simpler terms, Starknet scales Ethereum by shifting heavy L1 computations to lighter L1 verification using STARK proofs computed off-chain.</p>
         
-   <p>Copy this sample contract code <a href="https://github.com/naufalprtm/starknet/blob/main/contract/lib.cairo">sample</a>.</p>
-   <pre>
+        <p>Official Starknet documentation can be found <a href="https://www.starknet.io/en/learn/what-is-starknet" target="_blank">here</a>.</p>
+    </article>
+    <br>
+    <article class="article-text">
+        <img src="/images/How it Works.png" class="article-image">
+        <h2>How it Works</h2>
+        <p>
+            Let's break down the complex jargon. Starknet is like a high-tech engine running behind the scenes, making Ethereum faster and more secure.
+        </p>
+        <p>Starknet is a permissionless Validity-Rollup, often called a “ZK-Rollup,” that acts as a Layer 2 (L2) network over Ethereum. It operates in the real world, not just in theory. It achieves the same level of security as Ethereum Layer 1 by using the strongest cryptographic proof system called STARK.</p>
+        <p>Now, you might wonder what STARK is. In simple terms, it's a set of mathematical tricks that make the entire system work securely and efficiently. Think of it as the secret sauce that makes Starknet possible.</p>
+        <p>Starknet contracts are mostly written in the Cairo language, which is like the programming language for this magic engine. It's designed to make STARK proofs, which are the mathematical evidence that everything is working as it should.</p>
+        <p>In essence, Starknet solves two critical blockchain issues: scalability and privacy. It invites everyone to verify transactions, ensuring inclusive accountability. And it does this without compromising your privacy or excluding anyone due to computational limits.</p>
+        <p>Official Starknet How it Works can be found <a href="https://starkware.co/stark/" target="_blank">here</a>.</p>
+    </article>
+    <br>
+    <article class="article-text">
+        <img src="/images/glossary-image.png" class="article-image">
+        <h2>Glossary</h2>
+        <p>
+            This glossary provides explanations for key Starknet concepts and terms, helping you navigate the world of Starknet with confidence. Even if you're not a blockchain expert, you'll find this glossary user-friendly.
+        </p>
+        
+        <h3>Application Developers</h3>
+        <p>
+            These are the builders of Starknet applications. They create and deploy both Starknet and Ethereum contracts.
+        </p>
+    
+        <h3>Blocks (previously known as batches)</h3>
+        <p>
+            Blocks are like organized bundles of Starknet transactions processed by the Starknet OS. They result in one combined state change recorded in the Starknet L1 core contract. A block comes with a unique identifier (block hash) for easy reference and an ordinal number (block number) indicating its position in the sequence of accepted blocks. Note that a block's number may change over time, especially during L1 chain re-orders.
+        </p>
+    
+        <h3>Full State Node</h3>
+        <p>
+            A Full State Node is your go-to source for querying the current Starknet state. It can independently answer questions about the Starknet network's present condition, including the L1 state. It doesn't deal with transaction batches; its focus is on providing real-time answers.
+        </p>
+    
+        <h3>Prover</h3>
+        <p>
+            The Prover is a separate process that receives output from Cairo programs and crafts STARK proofs for verification. These STARK proofs are then submitted to the verifier, which registers the evidence on L1, ensuring transparency and trust.
+        </p>
+        <p>Official Starknet glossary can be found <a href="https://www.starknet.io/en/learn/glossary" target="_blank">here</a>.</p>
+    </article>
+    <br>
+    <article class="article-text">
+        <img src="/images/Getting Started Using Starknet.png" class="article-image">
+        <h2>Getting Started Using Starknet</h2>
+        <p>
+            A gentle hand-holding guide for your first steps using Starknet.
+        </p>
+        <p>Background: When I tried to get started using Starknet, I found it difficult to know exactly what to do. While I’ve heard a lot about the wonders of Starknet and how it can save me money in fees while providing security and trustlessness, I’m a blockchain newbie. In my quest to onboard to Starknet and try out some of the applications in the ecosystem, I found a lot of helpful information, but I also didn’t find a lot of information.</p>
+        <p>Official Starknet Getting Started guide can be found <a href="https://www.starknet.io/en/posts/stark-math/getting-started-using-starknet-setting-up-a-starknet-wallet" target="_blank">here</a>.</p>
+    </article>
 
-        <code>
-nano src/lib.cairo
-        </code>
-    </pre>
+    <article class="article-text">
+        <img src="/images/Overview Docs.png"class="article-image">
+        <h2>Overview Docs</h2>
+        <p>
+            Starknet is a permissionless, decentralized zero-knowledge rollup (ZK rollup) for Ethereum. It operates as a Layer 2 (L2) blockchain, enabling any dApp to achieve unlimited scale for its computation without compromising on Ethereum’s composability and security.
+        </p>
+        <p>Official Starknet Overview Docs can be found <a href="https://docs.starknet.io/documentation/" target="_blank">here</a>.</p>
+    </article>
+    <br>
+    <article class="article-text">
+        <img src="/images/Security & audits.png"  class="article-image">
+        <h2>Security & Audits</h2>
+        <p>
+            Secure your apps with auditing services for Starknet Smart Contracts.
+        </p>
+        <p>Official Starknet Security & Audits information can be found <a href="https://www.starknet.io/en/ecosystem/security-and-audits" target="_blank">here</a>.</p>
+    </article>
+    <br>
+    <main>
+        <!-- Image in the center -->
+        <div id="slider-container">
+       
+            <p>Choose and use this as your profile picture to support Starknet:</p>
+            <img id="security-slider" src=""alt="Security Slider" >
+        </div>
+    
+        <!-- "Next" and "Previous" buttons below the image -->
+        <div id="slider-controls">
+            <button onclick="prevSlide()">Previous</button>
+            <button onclick="nextSlide()">Next</button>
+        </div>
+    </main>
+    
 
-    <h2>Step 11: Compile the Smart Contract</h2>
-    <p>Compile the smart contract using Scarb:</p>
-    <pre>
-        <code>
-scarb build
-        </code>
-    </pre>
 
-    <p>The compiled contract will be saved in the target/dev/ directory.
 
-        The contract is now compiled and ready to be deployed. Next you will need to declare an RPC provider within your contract.</p>
-    <pre>
-</div>
-
-    <div class="tutorial-step">
-    <h2>Step 12: Declare a Smart Contract</h2>
-    <p>Declare a smart contract on Starknet:</p>
-    <pre>
-        <code>
-starkli declare target/dev/&lt;NAME&gt;.json --network=goerli-1 --compiler-version=2.1.0
-        </code>
-    </pre>
-    <p>Sample:</p>
-    <pre>
-        <code>
-starkli declare /home/users/target/dev/my_contract_Ownable.contract_class.json --network=goerli-1 --compiler-version=2.1.0
-        </code>
-    </pre>
-</div>
-
-    <div class="tutorial-step">
-    <h2>Step 13: Deploying a Smart Contract</h2>
-    <p>Deploy the smart contract with specific inputs:</p>
-    <pre>
-        <code>
-starkli deploy &lt;CLASS_HASH&gt; &lt;CONSTRUCTOR_INPUTS&gt; --network=goerli-1
-        </code>
-    </pre>
-    <p>Sample input:</p>
-    <pre>
-        <code>
-starkli deploy \
-    0x05c479961b3a155df6b2468a72a823dcc89ec76898060a3e694f32a0xxxxxxxx \
-    0x07ef62ac769dd7fabb2b07cc268c87dae36986fee79e9ff196920507xxxxxxxx \
-    --network=goerli-1
-        </code>
-    </pre>
-    <p>Expected output:</p>
-    <pre>
-        <code>
-Deploying class 0x07ef62ac769dd7fabb2b07cc268c87dae36986fee79e9ff196920507xxxxxxxx with salt 0x05c479961b3a155df6b2468a72a823dcc89ec76898060a3e694f32a0xxxxxxxx...
-The contract will be deployed at address 0x0310dc277877a6a2305808dc1b72716c274f67f03af5f04a0dfb6014518464b7
-Contract deployment transaction: 0x06def6fadcf26a5a86a1c3525e8c446749649dcf4fab0c9914cb4e1bea8b8890
-Contract deployed:
-0x0310dc277877a6a2305808dc1b72716c274f67f03af5f04a0dfb6014518464b7
-        </code>
-    </pre>
-</div>
-
-<p>Check the deployment result on <a href="https://testnet.starkscan.co/contract/">StarkScan</a>.</p>
-
-<div class="image">
-    <img src="1.png" alt="Starkli and Scarb">
-</div>
-</div>
-
-<div class="created-by">
-<p>Created by: <a href="https://github.com/naufalprtm">NaufalPrtm</a>.</p>
-</div>
-
-<p>Official Reference Website: <a href="https://www.starknet.io/en/">Starknet</a>.</p>
-<p>Official Reference Docs: <a href="https://docs.starknet.io/documentation/">Starknet Docs</a>.</p>
-<p>Reference Docs: <a href="https://book.starknet.io//">book starknet</a>.</p>
-<p>Reference EDU: <a href="https://github.com/starknet-edu">starknet edu</a>.</p>
-<p>Reference book cairo: <a href="https://book.cairo-lang.org/">book cairo</a>.</p>
+    <nav>
+        <ul>
+            <li><a href="https://www.starknet.io/en" target="_blank">Official Starknet Website</a></li>
+            <li><a href="/contract.html" target="_blank">Deploy Testnet Contract Tutorial</a></li>
+            <li><a href="/zeppelin.html" target="_blank">OpenZeppelin Contracts for Cairo</a></li>
+        </ul>
+    </nav>
+    <img src="/images/b2.png" class="banner-image">
+<footer>
+    <p>Created by: naufalprtm</p>
+    <img src="/images/profile.jpg" alt="Author's Profile Picture">
+</footer>
+<script src="/js/slider.js"></script>
 </body>
 </html>

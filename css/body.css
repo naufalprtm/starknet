@@ -1,0 +1,12 @@
+/* body.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background: rgb(255,255,255);
+    background: -moz-linear-gradient(180deg, rgba(255,255,255,1) 2%, rgba(252,190,245,1) 30%, rgba(58,212,224,1) 54%, rgba(245,244,245,1) 82%);
+    background: -webkit-linear-gradient(180deg, rgba(255,255,255,1) 2%, rgba(252,190,245,1) 30%, rgba(58,212,224,1) 54%, rgba(245,244,245,1) 82%);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 2%, rgba(252,190,245,1) 30%, rgba(58,212,224,1) 54%, rgba(245,244,245,1) 82%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#f5f4f5",GradientType=1);
+    margin: 0;
+    padding: 0;
+}
